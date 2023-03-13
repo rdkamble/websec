@@ -26,19 +26,12 @@ pipeline {
             }
        }
   
-     stage ('Host vulnerability assessment') {
-        steps {
-             sh 'echo "In-Progress"'
-        }
-     }
-    
      stage ('Static Application Security Testing') {
 	    steps {
-            withSonarQubeEnv('sonar') {
+            withSonarQubeEnv('Sonar-scanner') {
 	            sh 'mvn sonar:sonar'
-                //'mvn clean package sonar:sonar'
 	        }
 	    }
-     }
+     }      
    }
 }  
